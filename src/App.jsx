@@ -6,6 +6,7 @@ import Abaut from './pages/Abaut'
 import Produkt from './pages/Produkt'
 import "./App.css"
 import Card from './pages/Cart'
+import ToliqMalumodlar from './pages/ToliqMalumodlar'
 function App() {
   let router=createBrowserRouter([
     {
@@ -28,6 +29,10 @@ function App() {
           path:"/cart",
           element:<Card/>
         },
+        {
+          path:"/toliq",
+          element:<ToliqMalumodlar/>
+        }
 
       ]
     }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     Card,
     CardHeader,
@@ -8,8 +8,12 @@ import {
     Button,
 } from "@material-tailwind/react";
 import data from "../json/main.json";
+import { NavLink } from 'react-router-dom';
+import { MyContext } from '../context/GlobalContext';
 
 function Produkt() {
+    const { value, setValue } = useContext(MyContext); 
+
     console.log(data)
     const [malumod, setMalumod] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -171,6 +175,8 @@ function capitalizeFirstLetter(str) {
                 </div>
                 <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-[1100px] mx-auto'>
                     {malumod && malumod.map((e) => (
+                        <NavLink to="/toliq" onClick={()=>{setValue(e)}} key={e.id}>
+
                         <Card key={e.id} className="mt-6 bg-base-200 w-90 flex flex-col justify-between mx-[10px]">
                             <CardHeader color="blue-gray" className="relative h-56">
                                 <img
@@ -193,6 +199,7 @@ function capitalizeFirstLetter(str) {
                                 </CardFooter>
                             </div>
                         </Card>
+                        </NavLink>
                     ))}
                 </div>
             </div>
